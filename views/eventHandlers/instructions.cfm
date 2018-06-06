@@ -31,7 +31,7 @@
 
 <h3>Online Resources to Help you Complete the Event Handler Koans</h3>
 <ul>
-	<li>ColdBox Book - <a href="https://coldbox.ortusbooks.com/content/full/event_handlers/" target="_blank">https://coldbox.ortusbooks.com/content/full/event_handlers/</a></li>
+	<li>ColdBox Book - <a href="https://coldbox.ortusbooks.com/the-basics/event-handlers" target="_blank">Event Handlers</a></li>
 	
 </ul>
 

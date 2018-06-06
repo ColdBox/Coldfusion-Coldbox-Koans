@@ -32,8 +32,7 @@
     
     <h3>Online Resources to Help you Complete the Layout Views Koans</h3>
     <ul>
-        <li>ColdBox Book - <a href="https://coldbox.ortusbooks.com/content/full/event_handlers/" target="_blank">https://coldbox.ortusbooks.com/content/full/event_handlers/</a></li>
-        
+        <li>ColdBox Book - <a href="https://coldbox.ortusbooks.com/the-basics/layouts-and-views" target="_blank">Layouts and Views</a></li>
     </ul>
     
 </cfoutput>
