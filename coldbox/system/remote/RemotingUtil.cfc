@@ -1,7 +1,7 @@
 ﻿<!-----------------------------------------------------------------------
 ********************************************************************************
 Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
-www.coldbox.org | www.luismajano.com | www.ortussolutions.com
+www.ortussolutions.com
 ********************************************************************************
 
 Author     :	Luis Majano
@@ -13,7 +13,7 @@ A cool remoting utililty component
 	<!--- 
 	Based on original function by Elliot Sprehn, found here
 	http://livedocs.adobe.com/coldfusion/7/htmldocs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=ColdFusion_Documentation&file=00000271.htm
-	BlueDragon and Railo by Chris Blackwell
+	by Chris Blackwell
 	--->
 	<cffunction name="clearHeaderBuffer" output="false" access="public" returntype="void" hint="Clear the CFHTMLHead buffer">
 		<cfset var my = structnew() />
@@ -34,37 +34,12 @@ A cool remoting utililty component
 	
 			</cfcase>
 	
-			<cfcase value="BlueDragon">
 	
-				<cfset my.resp = getPageContext().getResponse() />
-	
-				<cfloop condition="true">
-					<cfset my.parentf = my.resp.getClass().getDeclaredField('parent') />
-					<cfset my.parentf.setAccessible(true) />
-					<cfset my.parent = my.parentf.get(my.resp) />
-	
-					<cfif isObject(my.parent) AND getMetaData(my.parent).getName() is 'com.naryx.tagfusion.cfm.engine.cfHttpServletResponse'>
-						<cfset my.resp = my.parent />
-					<cfelse>
-						<cfbreak />
-					</cfif>
-				</cfloop>
-	
-				<cfset my.writer = my.resp.getClass().getDeclaredField('writer') />
-				<cfset my.writer.setAccessible(true) />
-				<cfset my.writer = my.writer.get(my.resp) />
-	
-				<cfset my.headbuf = my.writer.getClass().getDeclaredField('headElement') />
-				<cfset my.headbuf.setAccessible(true) />
-				<cfset my.headbuf.get(my.writer).setLength(0) />
-	
-			</cfcase>
-	
-			<cfcase value="Railo">
+			<cfcase value="Lucee">
 	
 				<cfset my.out = getPageContext().getOut() />
 	
-				<cfloop condition="getMetaData(my.out).getName() is 'railo.runtime.writer.BodyContentImpl'">
+				<cfloop condition="getMetaData(my.out).getName() is 'lucee.runtime.writer.BodyContentImpl'">
 					<cfset my.out = my.out.getEnclosingWriter() />
 				</cfloop>
 	

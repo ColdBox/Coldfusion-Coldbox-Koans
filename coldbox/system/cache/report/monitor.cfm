@@ -2,7 +2,7 @@
 <!-----------------------------------------------------------------------
 ********************************************************************************
 Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
-www.coldbox.org | www.luismajano.com | www.ortussolutions.com
+www.ortussolutions.com
 ********************************************************************************
 
 Author 	    :	Luis Majano
@@ -68,7 +68,7 @@ ATTRIBUTES:
 </cfif>
 
 <!--- Render Reports According To Panel Requested --->
-<cfswitch expression="#debugPanel#">
+<cfswitch expression="#url.debugPanel#">
 	<cfcase value="cache">
 		<cfset ajaxRender = false>
 		<cfset report = reportHandler.renderCachePanel()>
