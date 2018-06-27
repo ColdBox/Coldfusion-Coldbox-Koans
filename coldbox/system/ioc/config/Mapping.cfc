@@ -1,7 +1,7 @@
 ﻿<!-----------------------------------------------------------------------
 ********************************************************************************
 Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
-www.coldbox.org | www.luismajano.com | www.ortussolutions.com
+www.ortussolutions.com
 ********************************************************************************
 
 Author 	    :	Luis Majano
@@ -74,24 +74,26 @@ Description :
 				// Mixins
 				mixins = [],
 				// Thread safety on wiring
-				threadSafe = ""
+				threadSafe = "",
+				// A closure that can influence the creation of the instance
+				influenceClosure = ""
 			};
 
 			// DI definition structure
-			DIDefinition = {name="",value="",dsl="",scope="variables",javaCast="",ref="",required=false,argName=""};
+			DIDefinition = { name="", value=JavaCast( "null", "" ), dsl=JavaCast( "null", "" ), scope="variables", javaCast=JavaCast( "null", "" ), ref=JavaCast( "null", "" ), required=false, argName="", type="any" };
 
 			return this;
 		</cfscript>
 	</cffunction>
 
 	<!--- getMemento --->
-    <cffunction name="getMemento" output="false" access="public" returntype="any" hint="Get the instance memento structure" colddoc:generic="struct">
+    <cffunction name="getMemento" output="false" access="public" returntype="any" hint="Get the instance memento structure" doc_generic="struct">
     	<cfreturn instance>
     </cffunction>
 
 	<!--- processMemento --->
     <cffunction name="processMemento" output="false" access="public" returntype="any" hint="Process a mapping memento">
-    	<cfargument name="memento" required="true" hint="The data memento to process" colddoc:generic="struct"/>
+    	<cfargument name="memento" required="true" hint="The data memento to process" doc_generic="struct"/>
 		<cfargument name="excludes" required="false" hint="List of instance's memento keys to not process" default="" />
     	<cfscript>
 			var x = 1;
@@ -199,6 +201,16 @@ Description :
 		<cfreturn this>
     </cffunction>
 
+    <!--- Closure for influencing instance creation --->
+    <cffunction name="getInfluenceClosure" access="public" returntype="any" output="false" hint="Get the influence closure. Empty string if not exists">
+    	<cfreturn instance.influenceClosure>
+    </cffunction>
+    <cffunction name="setInfluenceClosure" access="public" returntype="any" output="false" hint="Set the influence closure.">
+    	<cfargument name="influenceClosure" type="any" required="true">
+    	<cfset instance.influenceClosure = arguments.influenceClosure>
+		<cfreturn this>
+    </cffunction>
+
     <!--- Mixins --->
 	<cffunction name="getMixins" access="public" returntype="any" output="false" hint="Get the mixins array list">
     	<cfreturn instance.mixins>
@@ -220,11 +232,11 @@ Description :
     </cffunction>
 
 	<!--- Aliases --->
-	<cffunction name="getAlias" access="public" returntype="any" output="false" hint="Get the mapping aliases array" colddoc:generic="Array">
+	<cffunction name="getAlias" access="public" returntype="any" output="false" hint="Get the mapping aliases array" doc_generic="Array">
     	<cfreturn instance.alias>
     </cffunction>
     <cffunction name="setAlias" access="public" returntype="any" output="false" hint="Set the mapping aliases">
-    	<cfargument name="alias" required="true" colddoc:generic="Array">
+    	<cfargument name="alias" required="true" doc_generic="Array">
     	<cfset instance.alias = arguments.alias>
     	<cfreturn this>
     </cffunction>
@@ -280,38 +292,38 @@ Description :
     </cffunction>
 
 	<!--- isAutowire --->
-    <cffunction name="isAutowire" output="false" access="public" returntype="any" hint="Flag describing if you are using autowire or not as Boolean" colddoc:generic="Boolean">
+    <cffunction name="isAutowire" output="false" access="public" returntype="any" hint="Flag describing if you are using autowire or not as Boolean" doc_generic="Boolean">
     	<cfreturn instance.autowire>
     </cffunction>
     <cffunction name="setAutowire" access="public" returntype="any" output="false" hint="Set autowire property">
-    	<cfargument name="autowire" required="true" colddoc:generic="Boolean">
+    	<cfargument name="autowire" required="true" doc_generic="Boolean">
     	<cfset instance.autowire = arguments.autowire>
     	<cfreturn this>
     </cffunction>
 
     <!--- isAspect --->
-    <cffunction name="isAspect" output="false" access="public" returntype="any" hint="Flag describing if this mapping is an AOP aspect or not" colddoc:generic="Boolean">
+    <cffunction name="isAspect" output="false" access="public" returntype="any" hint="Flag describing if this mapping is an AOP aspect or not" doc_generic="Boolean">
     	<cfreturn instance.aspect>
     </cffunction>
     <cffunction name="setAspect" access="public" returntype="any" output="false" hint="Set aspect property">
-    	<cfargument name="aspect" required="true" colddoc:generic="Boolean">
+    	<cfargument name="aspect" required="true" doc_generic="Boolean">
     	<cfset instance.aspect = arguments.aspect>
     	<cfreturn this>
     </cffunction>
 
     <!--- isAspectAutoBinding --->
-    <cffunction name="isAspectAutoBinding" output="false" access="public" returntype="any" hint="Is this mapping an auto aspect binding" colddoc:generic="Boolean">
+    <cffunction name="isAspectAutoBinding" output="false" access="public" returntype="any" hint="Is this mapping an auto aspect binding" doc_generic="Boolean">
     	<cfreturn instance.autoAspectBinding>
     </cffunction>
     <!--- setAspectAutoBinding --->
     <cffunction name="setAspectAutoBinding" output="false" access="public" returntype="any" hint="Set the aspect auto binding bit">
-    	<cfargument name="autoBinding" required="true" colddoc:generic="Boolean">
+    	<cfargument name="autoBinding" required="true" doc_generic="Boolean">
     	<cfset instance.autoAspectBinding = arguments.autoBinding>
     	<cfreturn this>
     </cffunction>
 
 	<!--- isAutoInit --->
-    <cffunction name="isAutoInit" output="false" access="public" returntype="any" hint="Using auto init of mapping target or not as boolean" colddoc:generic="Boolean">
+    <cffunction name="isAutoInit" output="false" access="public" returntype="any" hint="Using auto init of mapping target or not as boolean" doc_generic="Boolean">
     	<cfreturn instance.autoInit>
     </cffunction>
     <cffunction name="setAutoInit" access="public" returntype="any" output="false" hint="Set autoInit property">
@@ -331,7 +343,7 @@ Description :
     </cffunction>
 
 	<!--- DSL --->
-	<cffunction name="isDSL" output="false" access="public" returntype="any" hint="Does this mapping have a DSL construction element or not as Boolean" colddoc:generic="boolean">
+	<cffunction name="isDSL" output="false" access="public" returntype="any" hint="Does this mapping have a DSL construction element or not as Boolean" doc_generic="boolean">
 		<cfreturn (len(instance.dsl) GT 0)>
     </cffunction>
     <cffunction name="getDSL" access="public" returntype="any" output="false" hint="Get the construction DSL">
@@ -354,12 +366,12 @@ Description :
 			return this;
 		</cfscript>
     </cffunction>
-    <cffunction name="getCacheProperties" output="false" access="public" returntype="any" hint="Get this mappings cache properties structure" colddoc:generic="struct">
+    <cffunction name="getCacheProperties" output="false" access="public" returntype="any" hint="Get this mappings cache properties structure" doc_generic="struct">
     	<cfreturn instance.cache>
     </cffunction>
 
 	<!--- getDIConstructorArguments --->
-    <cffunction name="getDIConstructorArguments" output="false" access="public" returntype="any" hint="Get all the constructor argument definitions array" colddoc:generic="array">
+    <cffunction name="getDIConstructorArguments" output="false" access="public" returntype="any" hint="Get all the constructor argument definitions array" doc_generic="array">
     	<cfreturn instance.DIConstructorArgs>
     </cffunction>
 
@@ -371,12 +383,13 @@ Description :
 		<cfargument name="value" 	required="false" hint="The explicit value of the constructor argument, if passed."/>
     	<cfargument name="javaCast" required="false" hint="The type of javaCast() to use on the value of the argument. Only used if using dsl or ref arguments"/>
     	<cfargument name="required" required="false" default="true" hint="If the argument is required or not, by default we assume required DI arguments."/>
+		<cfargument name="type"		required="false" default="any" hint="The type of the argument."/>
 		<cfscript>
     		var def = getDIDefinition();
 			var x   = 1;
 			// check if already registered, if it is, just return
 			for(x=1; x lte arrayLen(instance.DIConstructorArgs); x++){
-				if( structKeyExists(instance.DIConstructorArgs[x],"name") AND
+				if( structKeyExists( arguments, "name" ) AND structKeyExists( instance.DIConstructorArgs[x], "name" ) AND
 					instance.DIConstructorArgs[x].name eq arguments.name ){ return this;}
 			}
 			// Register new constructor argument.
@@ -395,6 +408,7 @@ Description :
 		<cfargument name="value" 	required="false" hint="The explicit value of the method argument, if passed."/>
     	<cfargument name="javaCast" required="false" hint="The type of javaCast() to use on the value of the argument. Only used if using dsl or ref arguments"/>
     	<cfargument name="required" required="false" default="true" hint="If the argument is required or not, by default we assume required DI arguments."/>
+    	<cfargument name="type"		required="false" default="any" hint="The type of the argument."/>
 		<cfscript>
     		var def = getDIDefinition();
 			var x	= 1;
@@ -410,12 +424,12 @@ Description :
     </cffunction>
 
 	<!--- getDIMethodArguments --->
-    <cffunction name="getDIMethodArguments" output="false" access="public" returntype="any" hint="Get all the method argument definitions array" colddoc:generic="array">
+    <cffunction name="getDIMethodArguments" output="false" access="public" returntype="any" hint="Get all the method argument definitions array" doc_generic="array">
     	<cfreturn instance.DIMethodArgs>
     </cffunction>
 
 	<!--- getProperties --->
-    <cffunction name="getDIProperties" output="false" access="public" returntype="any" hint="Get all the DI property definitions array" colddoc:generic="Array">
+    <cffunction name="getDIProperties" output="false" access="public" returntype="any" hint="Get all the DI property definitions array" doc_generic="Array">
     	<cfreturn instance.DIProperties>
     </cffunction>
 
@@ -427,21 +441,23 @@ Description :
 		<cfargument name="value" 	required="false" hint="The value of the property, if passed."/>
     	<cfargument name="javaCast" required="false" hint="The type of javaCast() to use on the value of the property. Only used if using dsl or ref arguments"/>
     	<cfargument name="scope" 	required="false" default="variables" hint="The scope in the CFC to inject the property to. By default it will inject it to the variables scope"/>
-    	<cfscript>
+    	<cfargument name="required" required="false" default="true" hint="If the property is required or not, by default we assume required DI properties."/>
+		<cfargument name="type"		required="false" default="any" hint="The type of the property."/>
+		<cfscript>
     		var def = getDIDefinition();
 			var x	= 1;
 			// check if already registered, if it is, just return
-			for(x=1; x lte arrayLen(instance.DIProperties); x++){
-				if( instance.DIProperties[x].name eq arguments.name ){ return this;}
+			for( x=1; x lte arrayLen( instance.DIProperties ); x++ ){
+				if( instance.DIProperties[ x ].name eq arguments.name ){ return this;}
 			}
-			structAppend(def, arguments, true);
+			structAppend( def, arguments, true );
 			arrayAppend( instance.DIProperties, def );
 			return this;
     	</cfscript>
     </cffunction>
 
     <!--- getDISetters --->
-    <cffunction name="getDISetters" output="false" access="public" returntype="any" hint="Get all the DI setter definitions array" colddoc:generic="array">
+    <cffunction name="getDISetters" output="false" access="public" returntype="any" hint="Get all the DI setter definitions array" doc_generic="array">
     	<cfreturn instance.DISetters>
     </cffunction>
 
@@ -476,7 +492,7 @@ Description :
     </cffunction>
 
 	<!--- onDIComplete --->
-    <cffunction name="getOnDIComplete" output="false" access="public" returntype="any" hint="Get all the DI complete methods array" colddoc:generic="array">
+    <cffunction name="getOnDIComplete" output="false" access="public" returntype="any" hint="Get all the DI complete methods array" doc_generic="array">
     	<cfreturn instance.onDIComplete>
     </cffunction>
     <cffunction name="setOnDIComplete" output="false" access="public" returntype="any" hint="Set the DI Complete method array">
@@ -486,7 +502,7 @@ Description :
     </cffunction>
 
 	<!--- isDiscovered --->
-    <cffunction name="isDiscovered" output="false" access="public" returntype="any" hint="Checks if this mapping has already been processed or not" colddoc:generic="Boolean">
+    <cffunction name="isDiscovered" output="false" access="public" returntype="any" hint="Checks if this mapping has already been processed or not" doc_generic="Boolean">
     	<cfreturn instance.discovered>
     </cffunction>
 
@@ -509,7 +525,7 @@ Description :
     </cffunction>
 
 	<!--- isEagerInit --->
-    <cffunction name="isEagerInit" output="false" access="public" returntype="any" hint="Is this mapping eager initialized or not as Boolean" colddoc:generic="Boolean">
+    <cffunction name="isEagerInit" output="false" access="public" returntype="any" hint="Is this mapping eager initialized or not as Boolean" doc_generic="Boolean">
     	<cfreturn instance.eagerInit>
     </cffunction>
 
@@ -521,7 +537,7 @@ Description :
 	</cffunction>
 
 	<!--- getProviderMethods --->
-    <cffunction name="getProviderMethods" output="false" access="public" returntype="any" hint="Get the discovered provider methods array" colddoc:generic="Array">
+    <cffunction name="getProviderMethods" output="false" access="public" returntype="any" hint="Get the discovered provider methods array" doc_generic="Array">
     	<cfreturn instance.providerMethods>
     </cffunction>
 
@@ -548,9 +564,14 @@ Description :
 		<cfset var iData	 	= "">
 		<cfset var eventManager	= arguments.injector.getEventManager()>
 		<cfset var cacheProperties = {}>
+		<cfif isSimpleValue( instance.path ) >
+			<cfset var lockToken  = instance.path>
+		<cfelse>
+			<cfset var lockToken = createUUID()>
+		</cfif>
 
 		<!--- Lock for discovery based on path location, only done once per instance of mapping. --->
-		<cflock name="Mapping.MetadataProcessing.#instance.path#" type="exclusive" timeout="20" throwOnTimeout="true">
+		<cflock name="Mapping.#arguments.injector.getInjectorID()#.MetadataProcessing.#lockToken#" type="exclusive" timeout="20" throwOnTimeout="true">
 		<cfscript>
 	    	if( NOT instance.discovered ){
 				// announce inspection
@@ -575,7 +596,18 @@ Description :
 					md = arguments.metadata;
 				}
 				else{
-					md = arguments.injector.getUtil().getInheritedMetaData(instance.path, arguments.binder.getStopRecursions());
+					var produceMetadataUDF = function() { return injector.getUtil().getInheritedMetaData(instance.path, binder.getStopRecursions()); };
+					
+					// Are we caching metadata?
+					if( len( binder.getMetadataCache() ) ) {
+						// Get from cache or produce on demand
+						md = injector.getCacheBox().getCache( binder.getMetadataCache() ).getOrSet(
+							instance.path,
+							produceMetadataUDF
+						);
+					} else {
+						md = produceMetadataUDF();
+					}
 				}
 
 				// Store Metadata
@@ -740,9 +772,9 @@ Description :
 				case "regex" : { classMatcher = arguments.binder.match().regex( getToken(arguments.metadata.classMatcher,2,":") ); break; }
 				default: {
 					// throw, no matching matchers
-					arguments.binder.utility.throwIt(message="Invalid Class Matcher: #classes#",
-													type="Mapping.InvalidAOPClassMatcher",
-													detail="Valid matchers are 'any,annotatedWith:annotation,annotatedWith:annotation:value,mappings:XXX,instanceOf:XXX,regex:XXX'");
+					throw(message="Invalid Class Matcher: #classes#",
+						  type="Mapping.InvalidAOPClassMatcher",
+						  detail="Valid matchers are 'any,annotatedWith:annotation,annotatedWith:annotation:value,mappings:XXX,instanceOf:XXX,regex:XXX'");
 				}
 			}
 
@@ -765,9 +797,9 @@ Description :
 				case "regex" : { methodMatcher = arguments.binder.match().regex( getToken(arguments.metadata.methodMatcher,2,":") ); break; }
 				default: {
 					// throw, no matching matchers
-					arguments.binder.utility.throwIt(message="Invalid Method Matcher: #classes#",
-													type="Mapping.InvalidAOPMethodMatcher",
-													detail="Valid matchers are 'any,annotatedWith:annotation,annotatedWith:annotation:value,methods:XXX,instanceOf:XXX,regex:XXX'");
+					throw(message="Invalid Method Matcher: #classes#",
+						  type="Mapping.InvalidAOPMethodMatcher",
+						  detail="Valid matchers are 'any,annotatedWith:annotation,annotatedWith:annotation:value,methods:XXX,instanceOf:XXX,regex:XXX'");
 				}
 			}
 
@@ -796,8 +828,12 @@ Description :
 					if( structKeyExists(md.properties[x],"inject") ){
 						// prepare default params, we do this so we do not alter the md as it is cached by cf
 						params = {
-							scope="variables", inject="model", name=md.properties[x].name
+							scope="variables", inject="model", name=md.properties[x].name, required=true, type="any"
 						};
+						// default property type
+						if( structKeyExists( md.properties[ x ], "type" ) ){
+							params.type = md.properties[ x ].type;
+						}
 						// default injection scope, if not found in object
 						if( structKeyExists(md.properties[x],"scope") ){
 							params.scope = md.properties[x].scope;
@@ -806,8 +842,12 @@ Description :
 						if( len(md.properties[x].inject) ){
 							params.inject = md.properties[x].inject;
 						}
+						// Get required
+						if( structKeyExists( md.properties[ x ], "required" ) and isBoolean( md.properties[ x ].required ) ){
+							params.required = md.properties[ x ].required;
+						}
 						// Add to property to mappings
-						addDIProperty(name=params.name,dsl=params.inject,scope=params.scope);
+						addDIProperty( name=params.name, dsl=params.inject, scope=params.scope, required=params.required, type=params.type );
 					}
 
 				}
@@ -831,9 +871,12 @@ Description :
 
 							// prepare params as we do not alter md as cf caches it
 							params = {
-								required = false, inject="model",name=md.functions[x].parameters[y].name
+								required = false, inject="model", name=md.functions[x].parameters[y].name, type="any"
 							};
-
+							// check type annotation
+							if( structKeyExists( md.functions[ x ].parameters[ y ], "type" ) ){
+								params.type = md.functions[ x ].parameters[ y ].type;
+							}
 							// Check required annotation
 							if( structKeyExists(md.functions[x].parameters[y], "required") ){
 								params.required = md.functions[x].parameters[y].required;
@@ -849,7 +892,8 @@ Description :
 								// ADD Constructor argument
 								addDIConstructorArgument(name=params.name,
 														 dsl=params.inject,
-														 required=params.required);
+														 required=params.required,
+														 type=params.type);
 							}
 
 						}
@@ -891,7 +935,7 @@ Description :
 	</cffunction>
 
 	<!--- getDIDefinition --->
-    <cffunction name="getDIDefinition" output="false" access="private" returntype="any" hint="Get a new DI definition structure" colddoc:generic="structure">
+    <cffunction name="getDIDefinition" output="false" access="private" returntype="any" hint="Get a new DI definition structure" doc_generic="structure">
     	<cfreturn duplicate(variables.DIDefinition)>
     </cffunction>
 
