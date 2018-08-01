@@ -24,16 +24,19 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
     
                 beforeEach(function( currentSpec ){
                     setup();
-                });       
+                });
+
+                // Create resources
+                // Create route for the API call you did in the Advanced
     
                 it( "Can create a new handler", function() {
-                    // We are going to execute an Event called expertEvent
+                    // We are going to execute an Event called ExpertEvent
                     // Make a new Handler called expertEvent and a Method to catch this event and set a variable rc.welcomeMessage to "919643641"
-                    // 
                     
                     var event = execute( event="expertEvent.index", renderResults=false );
                     // Do your asserts below
                     expect(	event.getValue( name="welcomemessage" ) ).toBe( "919643641" );
+                    // TODO renderResults
                 });
 
                 it( "Can make a new handler action", function() {

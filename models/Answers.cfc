@@ -1,6 +1,6 @@
 
 /**
-* My Hint
+* This is my model
 */
 component{
     
@@ -11,20 +11,37 @@ component{
 
         // Do you really want to learn? Please do not cheat, read the documentation instead :)
         var answers = {
+            model = {
+                answer1 = "service",
+                answer2 = "singleton",
+                answer3 = "false",
+                answer4  = "wirebox",
+                answer5  = "onDIComplete",
+                answer6  = "property",
+                answer7  = "inject",
+                answer8  = "variables",
+                answer9  = "populateModel",
+                answer10 = "json,query,rc,struct,xml",
+                answer11 = "getInstance",
+                answer12 = "accessors",
+                answer13 = "wirebox.singletonReload",
+                answer14 = "WireBox.cfc"
+            },
             eventHandlers = {
                 answer1  = "controller",
-                answer2  = "index",
-                answer3  = "users.list",
-                answer4  = "team.list",
-                answer5  = "main.index",
-                answer6  = "DefaultEvent",
-                answer7  = "event,rc,prc",
-                answer8  = "runevent",
-                answer9  = "on",
-                answer10 = "cache=false",
-                answer11 = "this.allowedMethods",
-                answer12 = "around",
-                answer13 = "prehandler"
+                answer2  = "HTML",
+                answer3  = "JSON",
+                answer4  = "index",
+                answer5  = "users.list",
+                answer6  = "team.list",
+                answer7  = "main.index",
+                answer8  = "DefaultEvent",
+                answer9  = "event,rc,prc",
+                answer10  = "runevent",
+                answer11  = "on",
+                answer12  = "allowedMethods",
+                answer13  = "prehandler",
+                answer14  = "coldbox.eventCaching"
             },
             layoutsViews = {
                 answer1  = "views",
@@ -37,6 +54,22 @@ component{
                 answer8  = "no",
                 answer9  = "norender",
                 answer10 = "args"
+            },
+            interceptors = {
+                answer1  = "around",
+                answer2  = "interceptors",
+                answer3  = "name",
+                answer4  = "configure",
+                answer5  = "interceptorSettings",
+                answer6  = "false",
+                answer7  = "customInterceptionPoints",
+                answer8  = "event,interceptData,buffer,rc,prc",
+                answer9  = "buffer",
+                answer10 = "boolean",
+                answer11 = "true",
+                answer12 = "true",
+                answer13 = "announceInterception"
+
             }
         }
 

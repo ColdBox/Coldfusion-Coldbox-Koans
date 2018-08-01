@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
 * My BDD Test
 */
 component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
@@ -26,7 +25,6 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
                     setup();
                 });
                 
-
 				it( "Can make a new view file", function() {
 					// Make a new view file so our function that uses the view layoutsviews/viewExists works
 					// Add 615198711631 as the content for that view to verify

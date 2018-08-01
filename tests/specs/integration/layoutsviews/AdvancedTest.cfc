@@ -26,7 +26,6 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
                     setup();
                 });
                 
-    
                 it( "Can find myview1", function() {
                     // We are going to execute an Event called advancedlayoutsviews.whereismyview1
 					// Find the corresponding Event Handler, and the method, find and set the content of view.cfm to 9948913103
@@ -38,7 +37,6 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
 					expect( prc.cbox_renderdata.data ).toBe( "9948913103" );
                 });
 		
-
                 it( "Can find the view2 file with the required content", function() {
                    	// We are going to execute an Event called layoutsViews.whereismyview2
 					// Find the corresponding Event Handler, and the method, find and replace the current content of view2.cfm to 71314891

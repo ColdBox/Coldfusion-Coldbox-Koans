@@ -6,8 +6,7 @@
 		// coldbox directives
 		coldbox = {
 			//Application Setup
-			appName 				= "Your app name here",
-			eventName 				= "event",
+			appName 				= "ColdBox Koans",
 
 			//Development Settings
 			reinitPassword			= "",
@@ -85,16 +84,16 @@
 
 		//Interceptor Settings
 		interceptorSettings = {
-			throwOnInvalidStates = false,
 			customInterceptionPoints = ""
 		};
 
 		//Register interceptors as an array, we need order
 		interceptors = [
-			//SES
-			{class="coldbox.system.interceptors.SES",
-			 properties={}
-			}
+			{ 
+				class = "interceptors.MyInterceptor",
+				name = "MyInterceptor",
+				properties = { useSetterInjection=false }
+		  	},
 		];
 
 		/*

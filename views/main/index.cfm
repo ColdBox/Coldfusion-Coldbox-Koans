@@ -25,7 +25,6 @@
 
 <div class="row">
 	<div class="col-md-12">
-
 		<section id="gettingStarted">
 			<div class="col-md-9">
 				<div class="well">
@@ -47,36 +46,30 @@
 						This is a pop quiz styled question and answer approach. You will be tested on names of functions, default settings, and ensure you know the basics before
 						diving into the 2nd section, where your skills are put to the test.</li>
 						<li><b>Advanced - Practical Exercises</b><br>
-						This is where you have to navigate the Coldbox app, to find handlers, and views, to modify them to make the tests pass.</li>
+						This is where you have to navigate the Coldbox app, to find handlers, layouts and views to modify them to make the tests pass.</li>
 						<li><b>Expert - Practical Exercises</b><br>
-						This is where you have to navigate the Coldbox app, create new handlers, actions, and views, to make the tests pass.</li>
+						This is where you have to navigate the Coldbox app, create new handlers, actions and views, to make the tests pass.</li>
 					</ol></p>
 					
 					
 					<h3>Start Now - Select a Section Below</h3>
 
+					<p>Please note that order matters. Follow the order as shown below:</p>
+
 					<ul>
-						<li><a href="#event.buildLink( "eventHandler" )#">Events</a></li>
-						<li><a href="#event.buildLink( "layoutsViews" )#">Layouts and Views</a></li>
+						<li><a href="#event.buildLink( "Model" )#">Models</a></li>
+						<li><a href="#event.buildLink( "EventHandler" )#">Event Handlers</a></li>
+						<li><a href="#event.buildLink( "LayoutsViews" )#">Layouts and Views</a></li>
+						<li><a href="#event.buildLink( "Interceptor" )#">Interceptors</a></li>
 					</ul>
 					
-					<!--- <ul class="nav nav-list">
-							<li><a href="test/_koans/TestSuiteEventHandlers.cfm"><i class="icon-play"></i> Event Handlers</a></li>
-							<li><a href="test/_koans/TestSuiteLayoutsViews.cfm"><i class="icon-play"></i> Layouts & Views</a></li>
-							<!---<li><a href="test/_koans/TestSuiteRequestContext.cfm"><i class="icon-bookmark"></i> Request Context</a></li>--->
-							<!---<li><a href="test/_koans/TestSuiteURLMappings.cfm"><i class="icon-bookmark"></i> URL Mappings</a></li>
-							<li><a href="test/_koans/TestSuiteFormValidation.cfm"><i class="icon-bookmark"></i> Form-Object Validation</a></li>--->
-					</ul> --->
 				</div>
 		<div class="well">
 			<h2>Koans that are Coming Soon</h2>
 			
 			<p>We have ideas for more koans, including, but not limited to the following:</p>
 			<ul>
-				<li>WireBox (Dependency Injection) Koan</li>
 				<li>Modules Koan</li>
-				<li>CacheBox Koan</li>
-				<li>LogBox Koan</li>
 			</ul>
 			<p>We are also planning on making the Expert Examples actually help you build an application, so when you are done, you have a small working app, with
 			Model View Controllers (handlers) DAO Logging and Caching.

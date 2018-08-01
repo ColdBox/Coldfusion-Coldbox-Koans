@@ -1,37 +1,30 @@
 {
-    "name":"Advanced Script APP Template",
-    "version":"1.11.0",
-    "author":"You",
-    "location":"https://github.com/coldbox-templates/advanced-script/archive/v1.11.0.zip",
-    "slug":"cbtemplate-advanced-script",
-    "createPackageDirectory":false,
-    "type":"mvc",
-    "keywords":"",
-    "homepage":"",
-    "documentation":"",
+    "name":"ColdBox Koans",
+    "version":"2.0.0",
+    "author":"Javier Quintero",
+    "slug":"coldbox-koans",
+    "type":"demos",
     "repository":{
-        "type":"",
-        "url":""
+        "type":"git",
+        "url":"https://github.com/coldbox-samples/Coldfusion-Coldbox-Koans"
     },
-    "bugs":"",
-    "shortDescription":"",
-    "contributors":[],
+    "bugs":"https://github.com/coldbox-samples/Coldfusion-Coldbox-Koans/issues",
+    "shortDescription":"A great way to learn ColdBox and BDD.",
+    "contributors":[
+        "Gavin Pickin",
+        "Luis Majano"
+    ],
     "ignore":[],
-    "devDependencies":{
-        "testbox":"^2.5.0"
-    },
+    "devDependencies":{},
     "installPaths":{
         "coldbox":"coldbox",
-        "testbox":"testbox/",
-        "mockdatacfc":"modules/mockdatacfc"
+        "testbox":"testbox",
+        "mockdatacfc":"modules/mockdatacfc/"
     },
     "dependencies":{
-        "coldbox":"5.0.0",
-        "testbox":"^2.6.0+156",
+        "coldbox":"^5.1.0",
+        "testbox":"^2.7.0",
         "mockdatacfc":"^2.4.0"
     },
-    "scripts":{
-        "postVersion":"package set location='https://github.com/coldbox-templates/advanced-script/archive/v`package version`.zip'",
-        "postPublish":"!git push --follow-tags"
-    }
+    "scripts":{}
 }
