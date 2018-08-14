@@ -1,6 +1,17 @@
-WEB-INF
+# General Ignores + IDE
 .DS_Store
-.project
-.tmp_readme.html.36902~
+settings.xml
+WEB-INF
 
-.tmp_readme.html.8001~
+# logs
+logs/*.*
+
+# NPM, Bower, ETC
+**/node_modules/*
+**/bower_components/*
+
+## Ignored Dependencies
+coldbox/*
+testbox/*
+modules/*
+**/apidocs/**

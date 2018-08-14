@@ -1,8 +1,39 @@
-Coldfusion-Coldbox-Koans
+# Advanced Script Template
+
+An advanced template with all the bells and whistles in script format
+
+## License
+Apache License, Version 2.0.
+
+## Important Links
+
+Source Code
+- https://github.com/coldbox-templates/advanced-script
+
+## Quick Installation
+
+Each application templates contains a `box.json` so it can leverage [CommandBox](http://www.ortussolutions.com/products/commandbox) for its dependencies.  
+Just go into each template directory and type:
+
+```
+box install
+```
+
+This will setup all the needed dependencies for each application template.  You can then type:
+
+```
+box server start
+```
+
+And run the application.
+
+## About ColdBox Koans
+
+Coldbox-Koans
 ========================
 
 Getting Started in the Coldbox Koans
-The Coldbox Koans are actually built right into a Coldbox Lite application, so you can test your knowledge as you learn, using a real app.
+The Coldbox Koans are actually built right into a Coldbox 5 application, so you can test your knowledge as you learn, using a real app.
 
 We have broken Coldbox down into sections, so you can tackle one section at a time... as you get more comfortable with the material.
 Each section will have 3 sets of tests.
@@ -27,14 +58,15 @@ Koans that are Coming Soon
 
 This project is still new, but we have ideas for more koans, including, but not limited to the following:
 
-- Dependency Injection Koan
-- Caching Koan
-- Logging Koan
+- WireBox (Dependency Injection) Koan
+- Modules Koan
+- CacheBox Koan
+- LogBox Koan
 
 
 We are also planning on making the Expert Examples actually help you build an application, so when you are done, you have a small working app, with Model View Controllers (handlers) DAO Logging and Caching.
 
-If you would like to contribute to the project, please talk to Gavin on Twitter @gpickin so we can coordinate work, and make this a successful project.
+If you would like to contribute to the project, feel free to contact me jquintero@ortussolutions.com so we can coordinate work, and make this a successful project.
 
 
 What is a Koan - Where did it start?
@@ -63,10 +95,13 @@ According to the Neo-Ruby_koans Readme
 
 A special thanks to Mike Clark and Ara Howard for inspiring this project. Mike Clark wrote an excellent blog post about learning Ruby through unit testing. This sparked an idea that has taken a bit to solidify, that of bringing new rubyists into the community through testing. Ara Howard then gave us the idea for the Koans in his ruby quiz entry on Meta Koans (a must for any rubyist wanting to improve their skills). Also, “The Little Lisper” taught us all the value of the short questions/simple answers style of learning.
 
-- Mike Clark’s post www.clarkware.com/cgi/blosxom/2005/03/18
-- Meta Koans - rubyquiz.com/quiz67.html - Link is broken
+- Thanks Gavin Pickin for creating the first version of ColdBox Koans
+
 - The Little Lisper - www.amazon.com/Little-LISPer-Third-Daniel-Friedman/dp/0023397632
+- Learn a new programming language with koans- http://www.lauradhamilton.com/learn-a-new-programming-language-today-with-koans
 
-
-
+---
+ 
+###THE DAILY BREAD
+ > "I am the way, and the truth, and the life; no one comes to the Father, but by me (JESUS)" Jn 14:1-12
 

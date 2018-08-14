@@ -76,7 +76,7 @@
 			<a href="##"><i class="icon-arrow-up"></i> Back to top</a>
 		</p>
 		<p>
-			<a href="http://www.coldbox.org">ColdBox LITE</a> is a copyright-trademark software by
+			<a href="http://www.coldbox.org">ColdBox</a> is a copyright-trademark software by
 			<a href="http://www.ortussolutions.com">Ortus Solutions, Corp</a>
 		</p>
 		<p>
