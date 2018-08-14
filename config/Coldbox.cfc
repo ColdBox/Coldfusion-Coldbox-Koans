@@ -84,16 +84,12 @@
 
 		//Interceptor Settings
 		interceptorSettings = {
-			customInterceptionPoints = ""
+			customInterceptionPoints = []
 		};
 
 		//Register interceptors as an array, we need order
 		interceptors = [
-			{ 
-				class = "interceptors.MyInterceptor",
-				name = "MyInterceptor",
-				properties = { useSetterInjection=false }
-		  	},
+			
 		];
 
 		/*

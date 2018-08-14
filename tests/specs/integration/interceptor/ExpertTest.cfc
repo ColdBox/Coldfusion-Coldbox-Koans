@@ -29,6 +29,7 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
 
                 it( "Register the following custom interception points: `onContactCreate`, `onContactUpdate`, `onConctactDelete`", function() {                   
                     // Verify that the interceptor is adding the footer on the pages
+                    writeDump( controller ); abort;
                 });
                     
                 it( "Add announcements for `onContactCreate`, `onContactUpdate`, `onConctactDelete` in the contacts handler", function() {                   

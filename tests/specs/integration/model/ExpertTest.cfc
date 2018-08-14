@@ -24,22 +24,23 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
     
                 beforeEach(function( currentSpec ){
                     setup();
-                    contactService = getInstance( "ContactService" );
+                    contactService = prepareMock( getInstance( "ContactService" ) );
                 });
 
                 it( "Can Create a method to add a new contact", function() {
                     // Create a method that creates a new contact and return the object
-                    newContact = contactService.add();
+                    newContact = contactService.add( "name","email" );
                     expect( newContact.getID() ).notToBeNull();
                 });
 
                 it( "Can Create a method to update a new contact", function() {
                     // Update the first name of any of your contacts uising the update method you created before
-                    //Please assign a value for the following variables, assign an existing contact ID, and the new first name
-                    id = "";
+                    //Please assign a value for the following variables, Please notice that id `111` will not exist. Use valid id
+                    id = "111";
                     firstName="";
-                    updateContact = contactService.update( id, firstName );
-                    expect( updateContact.getFirstName() ).toBe( firstName );
+                    email="myTestEmail";
+                    updatedContact = contactService.update( id, firstName, email );
+                    expect( updatedContact ).toBeTrue();
                 });
 
                 it( "Can Create a method to delete a new contact", function() {
@@ -50,8 +51,10 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
                 });
 
                 it( "Inject a logger object for this class: inject=logbox:logger:{this} and log when contacts are created, deleted and updated.", function() {
-                    logbox = contactService.getPropertyMixin( "logbox" )
-                    expect( logbox ).notToBeNull();
+                    var mockLogger = prepareMock(
+                        contactService.getPropertyMixin( "log" )
+                    ).$( "info" );
+                    expect( mockLogger.$once( "info" ) ).toBeTrue();
                 });
 
         });

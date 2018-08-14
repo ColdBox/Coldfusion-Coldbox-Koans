@@ -37,23 +37,23 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
                     expect( data ).toBeArray();
                 });
 
-                it( "Can inject the Mock Data Service via the constructor and store it in the variables scope", function() {
-                    mockData = contactService.getPropertyMixin( "mockData" )
+                it( "Can inject the Mock Data Service via the property annotation and store it in the variables scope", function() {
+                    var mockData = contactService.getPropertyMixin( "mockData" );
                     expect( mockData ).notToBeNull();
                 });
 
                 it( "Can create an array of contacts using mockdata in the constructor with the following values (id, firstName, lastName, email)", function() {
-                    contacts = contactService.init();
+                    var contacts = contactService.getData();
                     expect( contacts ).toBeArray();
                 });
 
                 it( "Can retrieve a list of contacts contacts using the `list` method)", function() {
-                    contacts = contactService.list();
+                    var contacts = contactService.list();
                     expect( contacts ).toBeArray();
                 });
 
                 it( "Can retrieve a contact by id using a `get` method", function() {
-                    contact = contactService.get();
+                    var contact = contactService.get( );
                     expect( contact ).toHaveLenght( 1 );
                 });
 

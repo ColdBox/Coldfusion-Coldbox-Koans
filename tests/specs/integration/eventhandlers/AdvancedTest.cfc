@@ -26,7 +26,7 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
                     setup();
                 });
                 
-                // TODO: add a no layout example
+                // TODO add a no layout example
     
                 it( "Can change the welcome message value", function() {
                     // We are going to execute an Event called eventHandler.welcomeMessage
