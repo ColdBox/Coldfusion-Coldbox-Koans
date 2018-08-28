@@ -1,107 +1,108 @@
-# Advanced Script Template
+# ColdBox Koans #
 
-An advanced template with all the bells and whistles in script format
+## Introduction
 
-## License
-Apache License, Version 2.0.
+Getting Started in the Coldbox Koans
+The Coldbox Koans are actually built right into a Coldbox 5 application. The idea of this koans is that you can test your knowledge as you learn, using a real app. You will be able to learn and play with most of the framework features by making our tests pass. For that we use [Testbox](https://www.ortussolutions.com/products/testbox), our own testing framework. This app contains the following sections that will guide you and help you become a ColdBox expert.
 
-## Important Links
-
-Source Code
-- https://github.com/coldbox-templates/advanced-script
+- Models Koans
+- Event Handlers Koans
+- Layouts and Views Koans
+- Interceptors Koans
 
 ## Quick Installation
 
-Each application templates contains a `box.json` so it can leverage [CommandBox](http://www.ortussolutions.com/products/commandbox) for its dependencies.  
-Just go into each template directory and type:
+To get started we recommend using [CommandBox](http://www.ortussolutions.com/products/commandbox) to install the required dependencies.
+
+This app contains a `box.json` so it can leverage CommandBox for its dependencies.
+
+Just go into your app directory and type:
 
 ```
 box install
 ```
 
-This will setup all the needed dependencies for each application template.  You can then type:
+This will setup all the needed dependencies the app. You can then type:
 
 ```
 box server start
 ```
 
-And run the application.
+CommandBox will start the server and it will open the app using and available port for you.
 
 ## About ColdBox Koans
 
-Coldbox-Koans
-========================
-
-Getting Started in the Coldbox Koans
-The Coldbox Koans are actually built right into a Coldbox 5 application, so you can test your knowledge as you learn, using a real app.
-
 We have broken Coldbox down into sections, so you can tackle one section at a time... as you get more comfortable with the material.
+
 Each section will have 3 sets of tests.
 
-Basics - Pop Quiz
+### Basics - Pop Quiz
 
 This is a pop quiz styled question and answer approach. You will be tested on names of functions, default settings, and ensure you know the basics before diving into the 2nd section, where your skills are put to the test.
 
-
-Advanced - Practical Exercises
+### Advanced - Practical Exercises
 
 This is where you have to navigate the Coldbox app, to find handlers, and views, to modify them to make the tests pass.
 
-
-Expert - Practical Exercises
+### Expert - Practical Exercises
 
 This is where you have to navigate the Coldbox app, create new handlers, actions, and views, to make the tests pass.
 
 
+## More Koans Coming Soon
 
-Koans that are Coming Soon
+We hope we can make this project bigger and robust so you can learn all the great features of ColdBox and how you can create a powerful app without losing your mind. We will be adding more Koans including, but not limited to the following:
 
-This project is still new, but we have ideas for more koans, including, but not limited to the following:
-
-- WireBox (Dependency Injection) Koan
-- Modules Koan
-- CacheBox Koan
-- LogBox Koan
+- Modules Koans
+- Security Koans
 
 
-We are also planning on making the Expert Examples actually help you build an application, so when you are done, you have a small working app, with Model View Controllers (handlers) DAO Logging and Caching.
+If you would like to contribute to the project, feel free to contact me jquintero@ortussolutions.com or any of the Ortus team so we make this project even more powerful.
 
-If you would like to contribute to the project, feel free to contact me jquintero@ortussolutions.com so we can coordinate work, and make this a successful project.
+Thanks Gavin Pickin for creating the first version of ColdBox Koans.
 
+## Documentation
+
+All the documentation you will need to complete the Koans sections can be found in the following links:
+
+### ColdBox
+
+- https://coldbox.ortusbooks.com/
+
+
+### Testbox
+
+- https://testbox.ortusbooks.com/
+
+
+## Koans History
 
 What is a Koan - Where did it start?
 
 The Koans walk you along the path to enlightenment in order to learn XXXX. The goal is to learn the XXXX language, syntax, structure, and some common functions and libraries. We also teach you culture. Testing is not just something we pay lip service to, but something we live. It is essential in your quest to learn and do great things in the language. 
 (Taken from Neo-Ruby_Koans readme) - Replace XXXX with the language or tool the Koans are built for.
 
-
-The first Koans is thought to be the Ruby Koans. If you search GitHub (click here to jump to the search) you will see Ruby Koans (link to GitHub Repo) is listed first, with almost 2000 Stars. You will see them for most languages, Javascript, Python, Clojure, ASPNET, and a lot more.
-
-Coldfusion Koans (created by Ryan Anklam @bittersweetryan) was the inspiration for the ColdBox koans, and is listed on the 2nd page, which is great because usually ColdFusion does not appear high on searches across all languages.
+The first Koans is thought to be the Ruby Koans. However, due to the success of this leraning style you will see them for most languages, Javascript, Python, Clojure, ASPNET, and a lot more.
 
 
+## BDD - Behavior-Driven Development
 
-The Idea - Red, Green, Refactor
+Behavior-driven development is an extension of [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) development that makes use of a simple, domain-specific scripting language. These DSLs convert structured natural language statements into executable tests. The result is a closer relationship to acceptance criteria for a given function and the tests used to validate that functionality. As such it is a natural extension of TDD testing in general.
 
-In test-driven development the mantra has always been red, green, refactor. Write a failing test and run it (red), make the test pass (green), then look at the code and consider if you can make it any better (refactor).
+- 2003: agiledox, the ancestor of BDD, is a tool generating technical documentation automatically from JUnit tests, written by Chris Stevenson
+- 2004: in order to test his hypotheses about de-emphasizing "test" terminology in favor of "behavior", Dan North releases JBehave
+- 2006: in collaboration with Chris Matts, North proposes the given-when-then canvas to expand the scope of BDD to business analysis and documents the approach in "Introducing BDD"
+- 2006-2009: several new tools are released confirming the community's investment in BDD, such as RSpec or more recently, Cucumber and GivWenZen
 
-While walking the path to enlightenment you will need to run the koan and see it fail (red), make the test pass (green), then take a moment and reflect upon the test to see what it is teaching you and improve the code to better communicate its intent (refactor).
 
+## References
 
-
-What Inspired the Ruby Koans
-
-According to the Neo-Ruby_koans Readme
-
-A special thanks to Mike Clark and Ara Howard for inspiring this project. Mike Clark wrote an excellent blog post about learning Ruby through unit testing. This sparked an idea that has taken a bit to solidify, that of bringing new rubyists into the community through testing. Ara Howard then gave us the idea for the Koans in his ruby quiz entry on Meta Koans (a must for any rubyist wanting to improve their skills). Also, “The Little Lisper” taught us all the value of the short questions/simple answers style of learning.
-
-- Thanks Gavin Pickin for creating the first version of ColdBox Koans
-
-- The Little Lisper - www.amazon.com/Little-LISPer-Third-Daniel-Friedman/dp/0023397632
-- Learn a new programming language with koans- http://www.lauradhamilton.com/learn-a-new-programming-language-today-with-koans
+- Ruby Koans - http://rubykoans.com/
+- Collection of Koans - https://changelog.com/posts/a-huge-list-of-koans
+- https://www.agilealliance.org/glossary/bdd/
 
 ---
  
-###THE DAILY BREAD
+### THE DAILY BREAD
  > "I am the way, and the truth, and the life; no one comes to the Father, but by me (JESUS)" Jn 14:1-12
 
