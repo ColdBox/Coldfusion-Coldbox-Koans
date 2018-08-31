@@ -164,68 +164,64 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
 
                 });
 
+                it( "Can create a new handler", function() {
+                    // We are going to execute an Event called Contacts
+                    // Make a new Handler called Contacts and a Method to catch this event and set a variable rc.welcomeMessage to "919643641"
+                    
+                    var event = execute( event="contacts.index", renderResults=false );
+                    // Do your asserts below
+                    expect(	event.getValue( name="welcomemessage" ) ).toBe( "919643641" );
+                    // TODO renderResults
+                });
+
+                it( "Can create a new handler action", function() {
+                    // We are going to execute an Event called expertEvent.mySecondAction
+                    // Make a new Handler and Method to catch the expertEvent.mySecondAction event and set a variable rc.welcomeMessage to ThisIsEasy
+                    
+                    var event = execute( "contacts.myFirstHandlerAction" );
+                    // Do your expectations below
+                    expect(	event.getCurrentAction() ).toBe( "myFirstHandlerAction" );
+
+                });
+
                 it( "Can return contacts as JSON", function() {
                     // Using the `list` method of ContactService you created in the models section, return the contact list as JSON
                     // Inject the ContactService in the handler and call the `list` method and make sure you return the list as JSON
                     
-                    //var event = execute( "contacts.returnListAsJSON" );
-                    var event = request( route="/contacts/returnListAsJSON", renderResults=true );
-
+                    var event = execute( "contacts.returnListAsJSON" );                    
+                    var results = event.getPrivateCollection();
                     // Expectations
-                    expect( event.getRenderData() ).toBeJSON();
+                    expect( results.cbox_renderdata.type ).toBe( "JSON" );
                 });
 
                 // Story - Present a contact card in JSON, HTML and PDF
 
                 story( "I need to present a contact card in different formats", function(){
                     given( "A contact card in JSON", function(){
-                        then( "I should render a contact card in JSON format", function(){
-                            var response = execute( "contacts.returnContactAsJSON" );
+                        then( "I should render a contact card in JSON format", function(){                            
+                            var event = execute( "contacts.returnContactAsJSON" );
+                            var results = event.getPrivateCollection();
                             // Expectations
-                            expect( response.cbox_renderdata.data ).toBeJSON();
+                            expect( results.cbox_renderdata.type ).toBe( "JSON" );
                         });	
                     });
                     given( "A contact card in HTML", function(){
                         then( "I should render a contact card in HTML format", function(){
                             var event = execute( "contacts.returnContactAsHTML" );
-
+                            var results = event.getPrivateCollection();
                             // Expectations
-                           expect( event.getPrivateCollection() ).notToBeJSON();
+                            expect( results.cbox_renderdata.type ).toBe( "HTML" );
                         });	
                     });
                     given( "A contact card in PDF", function(){
                         then( "I should render a contact card in PDF format", function(){
                             var event = execute( "contacts.returnContactAsPDF" );
-                            //writeDump( event ); abort;
+                            var results = event.getPrivateCollection();
                             // Expectations
-                            expect( event.getRenderData() ).nottoBeJSON();
+                            expect( results.cbox_renderdata.type ).toBe( "PDF" );
                         });	
                     });
                 });	
-                
-                
-                
-                // Create a describe, nested suite
-                it( "Leverage the ColdBox resources to create a full API of the contacts", function() {
-                    // You will need to create the `contacts` resources in config/Router.cfc
-                    // Make sure you have the following functions in the contacts handler index, new, create, show, edit, update, delete
-                    request( route="/contacts" );
-                    request( route="/contacts/new" );
-                    request( route="/contacts/create" );
-                    request( route="/contacts/show" );
-                    request( route="/contacts/edit" );
-                    request( route="/contacts/update" );
-                    delete( route="/contacts/delete" );
-                });
-
-                it( "Add event caching to the listing of all contacts and 1 contact display", function() {
-                    // Details go here
-
-                });
-
-                
-
-                
    
             });
         }
