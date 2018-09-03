@@ -27,7 +27,6 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
                 beforeEach(function( currentSpec ){
                     setup();
                     interceptor = getInstance( dsl="coldbox:interceptor:MyInterceptor" );
-                    //log = getInstance( dsl="logbox:logger:{this}" );
                     logBox = getInstance( dsl="logbox" );
                 });
                     

@@ -24,6 +24,7 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
     
                 beforeEach(function( currentSpec ){
                     setup();
+                    contactService = getInstance( "ContactService" );
                 });
                 
                 // TODO add a no layout example
@@ -162,6 +163,65 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
                     expect( event.getPrivateCollection().OldestFriend ).toBe( "Jack" );
 
                 });
+
+                it( "Can create a new handler", function() {
+                    // We are going to execute an Event called Contacts
+                    // Make a new Handler called Contacts and a Method to catch this event and set a variable rc.welcomeMessage to "919643641"
+                    
+                    var event = execute( event="contacts.index", renderResults=false );
+                    // Do your asserts below
+                    expect(	event.getValue( name="welcomemessage" ) ).toBe( "919643641" );
+                    // TODO renderResults
+                });
+
+                it( "Can create a new handler action", function() {
+                    // We are going to execute an Event called expertEvent.mySecondAction
+                    // Make a new Handler and Method to catch the expertEvent.mySecondAction event and set a variable rc.welcomeMessage to ThisIsEasy
+                    
+                    var event = execute( "contacts.myFirstHandlerAction" );
+                    // Do your expectations below
+                    expect(	event.getCurrentAction() ).toBe( "myFirstHandlerAction" );
+
+                });
+
+                it( "Can return contacts as JSON", function() {
+                    // Using the `list` method of ContactService you created in the models section, return the contact list as JSON
+                    // Inject the ContactService in the handler and call the `list` method and make sure you return the list as JSON
+                    
+                    var event = execute( "contacts.returnListAsJSON" );                    
+                    var results = event.getPrivateCollection();
+                    // Expectations
+                    expect( results.cbox_renderdata.type ).toBe( "JSON" );
+                });
+
+                // Story - Present a contact card in JSON, HTML and PDF
+
+                story( "I need to present a contact card in different formats", function(){
+                    given( "A contact card in JSON", function(){
+                        then( "I should render a contact card in JSON format", function(){                            
+                            var event = execute( "contacts.returnContactAsJSON" );
+                            var results = event.getPrivateCollection();
+                            // Expectations
+                            expect( results.cbox_renderdata.type ).toBe( "JSON" );
+                        });	
+                    });
+                    given( "A contact card in HTML", function(){
+                        then( "I should render a contact card in HTML format", function(){
+                            var event = execute( "contacts.returnContactAsHTML" );
+                            var results = event.getPrivateCollection();
+                            // Expectations
+                            expect( results.cbox_renderdata.type ).toBe( "HTML" );
+                        });	
+                    });
+                    given( "A contact card in PDF", function(){
+                        then( "I should render a contact card in PDF format", function(){
+                            var event = execute( "contacts.returnContactAsPDF" );
+                            var results = event.getPrivateCollection();
+                            // Expectations
+                            expect( results.cbox_renderdata.type ).toBe( "PDF" );
+                        });	
+                    });
+                });	
    
             });
         }
